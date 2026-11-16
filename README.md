@@ -24,6 +24,11 @@ handling, and the frontend API base URL, then validating those flows.
 
 ## Required environment
 
-Copy `.env.example` to `.env.local` and supply values from your own Supabase
-project. Keep the service-role key server-only and do not commit `.env.local`.
-Database schema setup is maintained in `ChessArena-database`.
+Copy `.env.example` to `.env.local` and supply values from your Supabase
+project. `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are
+used by the Next.js route handlers. The separate Socket.IO process also reads
+`SUPABASE_URL`, which must be the same project URL. Set the service-role key
+only in server environments and never commit `.env.local`.
+
+Database schema setup is maintained in `ChessArena-database`; its direct
+Postgres connection string and database password belong only there.
